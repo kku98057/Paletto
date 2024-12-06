@@ -17,7 +17,7 @@ const ColorInfo = ({ hex, rgb, cmyk }: ColorInfoProps) => {
   const [copiedText, setCopiedText] = useState<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
-  const handleCopy = (text: string, label: string) => {
+  const handleCopy = (label: string) => {
     // 이전 타이머가 있다면 제거
     if (timerRef.current) {
       clearTimeout(timerRef.current);
@@ -83,7 +83,7 @@ const ColorInfo = ({ hex, rgb, cmyk }: ColorInfoProps) => {
           <CopyToClipboard
             key={label}
             text={value}
-            onCopy={() => handleCopy(value, label)}
+            onCopy={() => handleCopy(label)}
           >
             <div className="bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors">
               <div className="flex items-center justify-between">
